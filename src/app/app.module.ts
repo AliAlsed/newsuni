@@ -13,7 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatFormFieldModule} from'@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material';
-
+import { StorageServiceModule } from 'angular-webstorage-service';
 import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatButtonModule, MatTableModule, MatIconModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
@@ -91,6 +91,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    StorageServiceModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatFormFieldModule,

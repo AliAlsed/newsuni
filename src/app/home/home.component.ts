@@ -1,7 +1,8 @@
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+const STORAGE_KEY = 'local_user';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,12 +10,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) { }
+  constructor(public afAuth: AngularFireAuth,
+     private router: Router,
+     @Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit( ) {
-    console.log(this.afAuth.auth.currentUser);
-    if (this.afAuth.auth.currentUser == null) {
+    console.log(this.storage
+      .get(STORAGE_KEY) || 'LocaL storage is empty');
+    if (this.storage
+      .get(STORAGE_KEY) == null) {
       this.router.navigate(['login']);
+    } else {
+      alert(this.storage
+        .get(STORAGE_KEY));
     }
   }
 
