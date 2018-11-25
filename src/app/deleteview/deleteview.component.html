@@ -12,10 +12,8 @@
           <tr *ngFor="let item of Data">
             <td>{{item.title}}</td>
             <td>{{item.Description}}</td>
-            <td> <button mat-button color="primary" value="update" (click)="up(item)"> update </button></td>
+            <td> <button mat-button color="accent" value="delete" (click)="del(item.id)"> delete </button> &nbsp;&nbsp;</td>
           </tr>
         </tbody>
       </table>     
 </div>
-
-

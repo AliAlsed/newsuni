@@ -1,6 +1,28 @@
-<div id="content-header">
-  <div id="breadcrumb">  Add news </div>
-</div>
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <section class="section section-lg section-shaped pb-250">
+      <div class="shape shape-style-1 shape-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container py-lg-md d-flex">
+        <div class="col px-0">
+          <div class="row">
+            <div class="col-lg-6">
+              <h1 class="display-3  text-white">Welcome to Uni News Panal</h1>
+              <p class="lead  text-white">One source for the Univiersty news, events and others</p>
+            </div>
+          </div>
+        </div>
+      </div>
 <mat-card style="margin:50px">
     <mat-card-content> 
 <form style="text-align: center" #f="ngForm" (ngSubmit)="save(f)">
@@ -10,9 +32,7 @@
           <input matInput name="title" ngModel placeholder="news Title" style="text-align: right" 
           required>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput name="shortDesc" ngModel placeholder="short Description" style="text-align: right" required>
-          </mat-form-field>
+
           <mat-form-field>
             <input matInput name="upload_at" ngModel [matDatepicker]="picker" placeholder="upload-at" required>
             <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
@@ -32,3 +52,6 @@
 </mat-card-content> 
 
 </mat-card>
+</section>
+</div>
+</main>

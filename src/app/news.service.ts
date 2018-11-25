@@ -11,7 +11,6 @@ export class NewsService {
   constructor(public firestore: AngularFirestore , public afAuth: AngularFireAuth ) { }
   createnews(
     title: string,
-    shortdesc: string,
     Description: string,
     date: string,
     image: string
@@ -20,17 +19,15 @@ export class NewsService {
     return this.firestore.doc(`newsList/${id}`).set({
       id,
       title,
-      shortdesc,
       Description,
       date,
       image,
     });
   }
-  updateNews(id, title, shortdesc, Description, date, image): Promise<void> {
+  updateNews(id, title, Description, date, image): Promise<void> {
      return this.firestore.doc(`newsList/${id}`).set({
       id,
       title,
-      shortdesc,
       Description,
       date,
       image,
@@ -47,9 +44,6 @@ export class NewsService {
   async login(email , password) {
     return await this.afAuth.auth.signInWithEmailAndPassword(email , password)
       .then(res => {
-        console.log(' res ');
-      }, (err) => {
-        alert(err);
-    });
+      });
   }
 }

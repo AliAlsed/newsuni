@@ -5,7 +5,7 @@
           <img src="../assets/img/brand/white.png">
         </a>
       </div>
-      <button style="background-color: transparent;  color: white; border: 0px" class="btn btn-outline-light" (click)="logout()"> logout</button>
+      <button style="background-color: transparent;  color: white; border: 0px" class="btn btn-outline-light" (click)="logout()" *ngIf="hide"> logout</button>
     </nav>
   </header>
   <router-outlet></router-outlet>

@@ -37,6 +37,7 @@
                   </div>
                   <div class="text-center">
                     <button type="submit" [disabled]="!f.valid" class="btn btn-primary my-4">Sign in</button>
+                    <p style="font-size: 15px; color: red" *ngIf="hide"> Email or password is incorrect </p>
                   </div>
                 </form>
               </div>

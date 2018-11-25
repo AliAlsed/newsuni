@@ -11,21 +11,24 @@ const STORAGE_KEY = 'local_user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+hide = false;
+emailhide = false;
+passwordhide = false;
   constructor(public afAuth: AngularFireAuth,
     public _NewsService: NewsService, private router: Router, @Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
   }
   signIn(f ) {
-    console.log('' + f.value.email);
+    const email = f.value.email;
+    if (f.value.password.length < 6 ) {
+      this.passwordhide = true;
+    }
     this._NewsService.login(f.value.email, f.value.password).then( (user) => {
       this.storage.set(STORAGE_KEY, this.afAuth.auth.currentUser);
-        console.log(this.storage
-           .get(STORAGE_KEY) || 'LocaL storage is empty');
       this.router.navigate(['homeapp']);
     }, (err) => {
-      alert( err );
+      this.hide = true;
     });
   }
 

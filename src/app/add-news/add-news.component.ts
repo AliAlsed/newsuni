@@ -28,11 +28,10 @@ export class AddNewsComponent implements OnInit {
   }
   save(form) {
     console.log(form.value.describtion);
-    console.log(form.value.shortDesc);
     console.log(form.value.title);
     console.log(this.image);
     if (this.image ) {
-    this._NewsService.createnews(form.value.title, form.value.shortDesc, form.value.describtion, this.date, this.image).then(
+    this._NewsService.createnews(form.value.title, form.value.describtion, this.date, this.image).then(
       (res) => {
       alert('Add Seccessfully');
       this.image = '';
@@ -44,17 +43,23 @@ export class AddNewsComponent implements OnInit {
   }
   async uploadImage(event) {
     const file = event.target.files[0];
-    const path = `posts/${file.name}`;
+    const path = `posts/${Math.floor(Math.random() * 255) + 1 }`;
     if (file.type.split('/')[0] !== 'image') {
       return alert('only image files');
     } else {
-      const task =  this.storage.upload(path, file).then(res => {
+      const task =  await this.storage.upload(path, file).then(res => {
         console.log(res);
       });
       const ref = this.storage.ref(path);
       this.downloadURL = ref.getDownloadURL();
-      console.log('Image Uploaded!');
-      this.downloadURL.subscribe(url => (this.image = url));
+      await this.downloadURL.subscribe(url => {
+        console.log(url);
+        alert(url);
+        if (this.image != null) {
+          this.image = null;
+        }
+        this.image = url;
+      });
     }
   }
 

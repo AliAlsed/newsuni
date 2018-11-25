@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './core/auth.guard';
 import {APP_BASE_HREF} from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { DeleteviewComponent } from './deleteview/deleteview.component';
 
 /*
 const appRoutes: Routes = [
@@ -65,6 +66,11 @@ const routes: Routes = [
     canActivate: [ AuthGuard]
   },
   {
+    path : 'delete-view',
+    component : DeleteviewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'update-news',
     component: UpdateNewsComponent,
     canActivate: [ AuthGuard]
@@ -86,6 +92,7 @@ const routes: Routes = [
     ScrollableDirective,
     UpdateNewsComponent,
     LoginComponent,
+    DeleteviewComponent,
   ],
   imports: [
     BrowserModule,

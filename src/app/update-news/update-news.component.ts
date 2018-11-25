@@ -17,7 +17,6 @@ image: any;
 date: any;
 data = {
   title: null,
-  shortdesc: null,
   Description: null,
   image: null,
   id: ''
@@ -35,7 +34,6 @@ Description;
     this.date = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
     this.router.params.subscribe( data => {
       this.title = data.title;
-      this.shortdesc = data.shortdesc;
       this.Description = data.Description;
       this.data.id = data.id;
       this.image = data.image;
@@ -68,7 +66,7 @@ Description;
     console.log(this.image);
     if (this.image ) {
 
-   this._NewsService.updateNews(this.data.id, this.title , this.shortdesc , this.Description , this.date, this.image).then((res) => {
+   this._NewsService.updateNews(this.data.id, this.title  , this.Description , this.date, this.image).then((res) => {
      console.log(res );
      alert('updated successfully ');
      this.route.navigate(['all-news']);

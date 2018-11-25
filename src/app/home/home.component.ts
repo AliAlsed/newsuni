@@ -21,8 +21,6 @@ export class HomeComponent implements OnInit {
       .get(STORAGE_KEY) == null) {
       this.router.navigate(['login']);
     } else {
-      alert(this.storage
-        .get(STORAGE_KEY));
     }
   }
 
